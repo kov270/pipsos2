@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     buttons.click(function () {
         view.val($(this).val())
     });
+
 });
 
 function validate(_form) {

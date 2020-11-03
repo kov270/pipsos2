@@ -32,18 +32,24 @@
     </style>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/jquery.arctext.js"></script>
+
 </head>
 <body>
 
 <main role="main" class="container">
+    <br><br><br>
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-lg">
         <div class="lh-100">
-            <h2 class="mb-0 text-white lh-100">Web Laboratory Ilya Kovalenko P3210 10782</h2>
+            <h2 class="mb-0 text-white lh-100 arc-text">Web Laboratory Ilya Kovalenko P3210 10782</h2>
+        </div>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="3000" value="3000" class="slider" id="myRange">
         </div>
     </div>
 
     <div class="my-3 p-3 bg-white rounded shadow-lg">
-        <h6 class="pb-2 mb-0">Enter Data:</h6>
+        <h6 class="pb-2 mb-0 arc-text">Enter Data:</h6>
         <div class="container">
             <div class="card-deck">
                 <div class="card">
@@ -69,11 +75,11 @@
                                 <th scope="col"><input class="btn b" type="button" id="5" value="5"></th>
                             </tr>
                         </table>
-                        <input type="number" class="x-panel" name="X" value="0" readonly="true" REQUIRED>
+                        <input type="number" class="x-panel arc-text" name="X" value="0" readonly="true" REQUIRED>
                         <br><br>
 
-                        <label for="X"> X = </label>
-                        <input class="input_X" id="X" type="text" name="Y" placeholder="(-3 ... 5)" REQUIRED><br>
+                        <label for="X" class="arc-text"> X = </label>
+                        <input class="input_X arc-text" id="X" type="text" name="Y" placeholder="(-3 ... 5)" REQUIRED><br>
 
                         <label> R = </label>
                         <input type="radio" name="R" CHECKED value="1" onclick="drawCanvas('canvas', 1)">1</input>
@@ -84,7 +90,7 @@
                         <br>
                         <small class="d-block text-left mt-3">
                             <input class="btn" type="submit" name="submit" value="Send">
-                            <a href="check" class="btn">Show results</a>
+                            <a href="check" class="btn arc-text">Show results</a>
                         </small>
                     </form>
                 </div>
@@ -101,10 +107,10 @@
                 <div class="my-3 p-3 bg-white rounded shadow-sm">
                     <table class="table table-bordered tbl">
                         <tr>
-                            <td>X</td>
-                            <td>Y</td>
-                            <td>R</td>
-                            <td>Result</td>
+                            <td class="arc-text">X</td>
+                            <td class="arc-text">Y</td>
+                            <td class="arc-text">R</td>
+                            <td class="arc-text">Result</td>
                         </tr>
                         ${table}
                     </table>
@@ -119,4 +125,11 @@
 
 </main>
 </body>
+<script>
+    $('.arc-text').arctext({radius: 3000, rotate: false, dir: -1});
+
+    $("#myRange").change(function(){
+        $('.arc-text').arctext('set', {radius: $(this).val(), rotate: false, dir: -1});
+    })
+</script>
 </html>
